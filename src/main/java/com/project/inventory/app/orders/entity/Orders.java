@@ -4,6 +4,8 @@ import com.project.inventory.app.suppliers.entity.Suppliers;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,6 +17,7 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 @Builder
 public class Orders {
     @Id
@@ -23,6 +26,8 @@ public class Orders {
     @ManyToOne
     @JoinColumn(name = "supplier_id")
     private Suppliers supplier;
+    @CreatedDate
+    @Column(updatable = false, nullable = false)
     private LocalDateTime orderDate;
     private LocalDateTime expectedDeliveryDate;
     @Enumerated(EnumType.STRING)
