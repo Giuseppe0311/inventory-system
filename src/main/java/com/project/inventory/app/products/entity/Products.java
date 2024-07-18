@@ -1,4 +1,4 @@
-package com.project.inventory.app.products;
+package com.project.inventory.app.products.entity;
 
 import com.project.inventory.app.categories.entity.Categories;
 import com.project.inventory.app.unitsOfMeasure.entity.UnitsOfMeasure;
